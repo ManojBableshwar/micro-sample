@@ -3,32 +3,37 @@ language: node_js
 
 # version numbers, testing against one version of node
 node_js:
-    - 0.10.33
-
+    - 0.12
+    
+env:
+    - XUNIT_FILE=../shippable/testresults/result.xml API_PORT=3001
 
 build:
+    pre_ci: 
+       - cd micro-api && docker build -t manojsb/micro-api .
+   pre_ci_boot:
+        image_name: manojsb/micro-api
+        image_tag: latest
+        pull: false
    ci:
+       - mkdir -p ../shippable/testresults
+       - mkdir -p ../shippable/codecoverage       
+       - cd micro-api
+       - npm install 
        - grunt
    on_success:
-       - cd micro-www && docker build -t manishas/micro-www .
+       - cd micro-www && docker build -t manojsb/micro-www .
        - cd ..
-       - cd micro-api && docker build -t manishas/micro-api .
-       - docker tag -f manishas/micro-www:latest manishas/micro-www:tip 
-       - docker tag -f manishas/micro-api:latest manishas/micro-api:tip
-       - docker push manishas/micro-api:tip
-       - docker push manishas/micro-www:tip
+       - cd micro-api && docker build -t manojsb/micro-api .
+       - docker tag -f manojsb/micro-www:latest manojsb/micro-www:tip 
+       - docker tag -f manojsb/micro-api:latest manojsb/micro-api:tip
+       - docker push manojsb/micro-api:tip
+       - docker push manojsb/micro-www:tip
 
 integrations:
-    notifications:
-        - integrationName: www_notif
-          type: slack
-          recipients:
-              - www-notifications
-          on_success: always
-          on_failure: always
 
     hub:
-        - integrationName: manishasDockerHub
+        - integrationName: Docker-Integration
           type: docker
 
 
