@@ -22,9 +22,7 @@ build:
        - npm install 
        - grunt
     on_success:
-       - pwd
-       - ls
-       - cd micro-www && docker build -t manojsb/micro-www .
+       - cd /root/src/github.com/ManojBableshwar/micro-sample/micro-www && docker build -t manojsb/micro-www .
        - cd ..
        - cd micro-api && docker build -t manojsb/micro-api .
        - docker tag -f manojsb/micro-www:latest manojsb/micro-www:tip 
