@@ -11,6 +11,10 @@ env:
 build:
     pre_ci: 
        - cd micro-api && docker build -t manojsb/micro-api .
+    pre_ci_boot:
+        image_name: manojsb/micro-api
+        image_tag: latest
+        pull: false
     ci:
        - mkdir -p ../shippable/testresults
        - mkdir -p ../shippable/codecoverage       
