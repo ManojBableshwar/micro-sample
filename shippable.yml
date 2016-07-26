@@ -29,5 +29,5 @@ build:
 integrations:
 
     hub:
-        - integrationName: Docker-Integration
+        - integrationName: Docker
           type: docker
