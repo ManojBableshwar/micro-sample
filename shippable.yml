@@ -20,7 +20,7 @@ build:
        - mkdir -p ../shippable/codecoverage       
        - cd micro-api
        - npm install 
-       - npm test
+       - grunt
     on_success:
        - cd /root/src/github.com/ManojBableshwar/micro-sample/micro-www && docker build -t manojsb/micro-www .
        - cd ..
