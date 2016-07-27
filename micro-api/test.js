@@ -17,9 +17,7 @@ describe('Index', function () {
         done();
       });
   });
-});
-
-describe1('Index', function () {
+  
   it('Testing Index call to ' + apiURL, function (done) {
     superagent.get(apiURL)
       .end(function (err, res) {
@@ -28,5 +26,7 @@ describe1('Index', function () {
         done();
       });
   });
+  
 });
+
 
