@@ -18,3 +18,15 @@ describe('Index', function () {
       });
   });
 });
+
+describe1('Index', function () {
+  it('Testing Index call to ' + apiURL, function (done) {
+    superagent.get(apiURL)
+      .end(function (err, res) {
+        (err === null).should.equal(true);
+        res.statusCode.should.equal(300);
+        done();
+      });
+  });
+});
+
