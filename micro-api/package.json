@@ -24,7 +24,8 @@
     "mocha": "^2.2.5",
     "should": "^6.0.3",
     "superagent": "^1.2.0",
-    "xunit-file": "0.0.6"
+    "xunit-file": "0.0.6",
+    "spec-xunit-file": "0.0.1-3"
   },
   "jshintConfig": {
     "node": true,
